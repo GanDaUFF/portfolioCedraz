@@ -68,6 +68,14 @@ export default function Component() {
 
   const projects = [
     {
+      title: "Ordem de Serviço Realtime",
+      description: "Sistema de gerenciamento de ordens de serviço com atualizações em tempo real",
+      image: "/placeholder.svg",
+      technologies: ["TypeScript", "React", "Node.js", "Socket.io"],
+      github: "https://github.com/GanDaUFF/ordem-servico-realtime",
+      demo: "#",
+    },
+    {
       title: "Contribuição open source",
       description: "Contribuição open source em um projeto de bootCamp da dio",
       image: "/projeto1.png",
@@ -85,10 +93,10 @@ export default function Component() {
     },
     {
       title: "Portfolio",
-      description: "Portfolio atual",
+      description: "Este portfolio, construído com Next.js, TypeScript e Tailwind CSS",
       image: "/projeto3.png",
-      technologies: ["Next.js", "Express","TypeScript"],
-      github: "#",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/GanDaUFF/PortfolioHenrique",
       demo: "#",
     },
   ]
@@ -162,7 +170,7 @@ export default function Component() {
             <div className="mb-8 relative">
               <div className="w-36 h-36 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 p-1 ">
                 <Image
-                  src="foto.jpeg"
+                  src="/foto.jpeg"
                   alt="Profile"
                   width={120}
                   height={120}
@@ -240,8 +248,8 @@ export default function Component() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Sou um desenvolvedor apaixonado por criar soluções digitais que fazem a diferença. Com mais de 1 ano de
-                experiência, especializo-me em desenvolvimento full stack e design de interfaces intuitivas.
+                Sou um desenvolvedor apaixonado por criar soluções digitais que fazem a diferença. Com mais de 2 anos de
+                experiência, me especializo em desenvolvimento full stack e design de interfaces intuitivas.
               </p>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -257,8 +265,8 @@ export default function Component() {
                 </div>
                 <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                   <GraduationCap className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">1+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Ano</div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">2+</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Anos</div>
                 </div>
               </div>
             </div>
@@ -329,21 +337,31 @@ export default function Component() {
                   </div>
 
                   <div className="flex space-x-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300"
-                    >
-                      <Github size={16} className="mr-2" />
-                      Código
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300"
-                    >
-                      <ExternalLink size={16} className="mr-2" />
-                      Demo
-                    </Button>
+                    {project.github !== "#" && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300"
+                      >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github size={16} className="mr-2" />
+                          Código
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo !== "#" && (
+                      <Button
+                        asChild
+                        size="sm"
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-300"
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink size={16} className="mr-2" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -507,7 +525,7 @@ export default function Component() {
               </a>
             </div>
             <div className="border-t border-gray-800 pt-8">
-              <p className="text-gray-500">© 2022 Henrique Cedraz. Todos os direitos reservados.</p>
+              <p className="text-gray-500">© {new Date().getFullYear()} Henrique Cedraz. Todos os direitos reservados.</p>
             </div>
           </div>
         </div>
